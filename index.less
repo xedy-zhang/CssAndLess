@@ -1,0 +1,52 @@
+.function-window-container(@width,@height,@background-color:skyblue,@blur-color:gray){
+	width: @width;
+	height: @height;
+	background-color: @background-color;
+	.function-box-shadow-4(10px,8px,15px,@blur-color);
+}
+
+.function-box-shadow-4(@left-offset:10px,@top-offset:8px,@blur:10px,@color:gray){
+	box-shadow: @left-offset @top-offset @blur @color;
+	-o-box-shadow: @left-offset @top-offset @blur @color;
+	-moz-box-shadow: @left-offset @top-offset @blur @color;
+	-wikit-box-shadow: @left-offset @top-offset @blur @color;
+}
+
+.function-information(@background-color:#88B14B,@color:white){
+	border-radius: 10px 10px;
+	border-style: solid;
+	border-color: @background-color;
+	border-width: 2px;
+	color:@color;
+	background-color: @background-color;
+	text-align: center;
+	.function-box-shadow-4;
+}
+
+div{
+	padding: 4px;
+	margin: 2px;
+}
+
+.information{
+	.function-information(#0C4C8A);
+}
+
+.title-container{
+	background-color: #EF562D;
+	text-align: center;
+}
+
+.window-container{
+	color:white;
+	font-size: 20px;
+	text-transform: uppercase;
+	float:left;
+	@media screen{
+		.function-window-container(400px,200px);
+		@media (min-width:800px){
+			.function-window-container(230px,180px,#D13076,black);
+		}
+	}
+}
+
