@@ -1,4 +1,4 @@
-@import "./lib/library";
+@import "lib/library.less";
 
 * {
 	box-sizing: border-box;
@@ -41,4 +41,62 @@ div{
 	.function-border-radius(@b-color,150px,150px);
 	@colors:white,lightgray,#d3d3d3 - 5,@b-color - 2,@b-color - 3,@b-color - 4;
 	.function-radial-gradient(circle,@colors);
+	.function-trangle-top(@b-color);
 }
+
+#testDiv,#subDiv{
+	@background-color : rgba(90, 129, 32, 1);
+	float:left;
+	width:200px;
+	height: 130px;
+	text-align: center;
+	vertical-align: middle;
+	padding: 40px;
+	margin: 20px;
+	color: contrast(@background-color);
+	background-color: @background-color;
+	&:hover{
+		background-color: lighten(@background-color, 50%);
+		.function-box-shadow-4;
+		color:darken(@background-color, 80%);
+		&:after{
+			content: " >>";
+			right: -10px;
+		}
+	}
+}
+
+.main-menu{
+	float: left;
+	height: 25px;
+	background-color: black;
+	color:white;
+	&:hover{
+		& .menu-item{
+			.menu-item-0;display: inline;
+		}
+		
+	}
+	& .menu-item{
+		.menu-item-0;display: none;
+	}
+}
+
+.menu-item-0(){
+	position: absolute;
+	background-color: lightgray;
+	color:contrast(lightgray);
+}
+
+// .mixin-if(@p)when(@p >= 20){
+// 	background-color:black;
+// 	color: white;
+// }
+// .mixin-if(@p,@1)when(@p < 20) and(@1 = 'test'){
+// 	background-color: skyblue;
+// 	color:black;
+// }
+
+// .xx{
+// 	.mixin-if(10px,'test');
+// }
