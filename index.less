@@ -1,10 +1,3 @@
-.function-window-container(@width,@height,@background-color:skyblue,@blur-color:gray){
-	width: @width;
-	height: @height;
-	background-color: @background-color;
-	.function-box-shadow-4(10px,8px,15px,@blur-color);
-}
-
 .function-box-shadow-4(@left-offset:10px,@top-offset:8px,@blur:10px,@color:gray){
 	box-shadow: @left-offset @top-offset @blur @color;
 	-o-box-shadow: @left-offset @top-offset @blur @color;
@@ -12,17 +5,37 @@
 	-wikit-box-shadow: @left-offset @top-offset @blur @color;
 }
 
+.function-border-radius(@color:black,@left:10px,@top:10px,@width:20px,@style:solid){
+	border-radius:@left @top;
+	border-color:@color;
+	border-width:@width;
+	border-style:@style;
+}
+
+.function-radial-gradient(@type:circle,@colors:white){
+	background: -webkit-radial-gradient(circle, @colors); /* Safari 5.1 - 6.0 */
+	background: -o-radial-gradient(circle, @colors); /* Opera 11.6 - 12.0 */
+	background: -moz-radial-gradient(circle, @colors); /* Firefox 3.6 - 15 */
+	background: radial-gradient(circle, @colors); /* 标准的语法 */
+}
+
+.function-window-container(@width,@height,@background-color:skyblue,@blur-color:gray){
+	width: @width;
+	height: @height;
+	background-color: @background-color;
+	.function-box-shadow-4(10px,8px,15px,@blur-color);
+}
+
 .function-information(@background-color:#88B14B,@color:white){
-	border-radius: 10px 10px;
-	border-style: solid;
-	border-color: @background-color;
-	border-width: 2px;
+	.function-border-radius(@background-color,10px,10px,2px,solid);
 	color:@color;
 	background-color: @background-color;
 	text-align: center;
 	.function-box-shadow-4;
 }
-
+* {
+	box-sizing: border-box;
+}
 div{
 	padding: 4px;
 	margin: 2px;
@@ -44,9 +57,21 @@ div{
 	float:left;
 	@media screen{
 		.function-window-container(400px,200px);
-		@media (min-width:800px){
-			.function-window-container(230px,180px,#D13076,black);
+		@media (min-width:450px){
+			.function-window-container(200px,130px,#D13076,black);
 		}
 	}
 }
 
+.lighted-circle{
+	@b-color:#00C1E0;
+	float: left;
+	z-index: 1;
+	width:150px;
+	height:150px;
+	background-color:@b-color;
+	.function-box-shadow-4;
+	.function-border-radius(@b-color,150px,150px);
+	@colors:white,lightgray,#d3d3d3 - 5,@b-color - 2,@b-color - 3,@b-color - 4;
+	.function-radial-gradient(circle,@colors);
+}
