@@ -1,0 +1,35 @@
+.function-box-shadow-4(@left-offset:10px,@top-offset:8px,@blur:10px,@color:gray){
+	box-shadow: @left-offset @top-offset @blur @color;
+	-o-box-shadow: @left-offset @top-offset @blur @color;
+	-moz-box-shadow: @left-offset @top-offset @blur @color;
+	-wikit-box-shadow: @left-offset @top-offset @blur @color;
+}
+
+.function-border-radius(@color:black,@left:10px,@top:10px,@width:20px,@style:solid){
+	border-radius:@left @top;
+	border-color:@color;
+	border-width:@width;
+	border-style:@style;
+}
+
+.function-radial-gradient(@type:circle,@colors:white){
+	background: -webkit-radial-gradient(circle, @colors); /* Safari 5.1 - 6.0 */
+	background: -o-radial-gradient(circle, @colors); /* Opera 11.6 - 12.0 */
+	background: -moz-radial-gradient(circle, @colors); /* Firefox 3.6 - 15 */
+	background: radial-gradient(circle, @colors); /* 标准的语法 */
+}
+
+.function-window-container(@width,@height,@background-color:skyblue,@blur-color:gray){
+	width: @width;
+	height: @height;
+	background-color: @background-color;
+	.function-box-shadow-4(10px,8px,15px,@blur-color);
+}
+
+.function-information(@background-color:#88B14B,@color:white){
+	.function-border-radius(@background-color,10px,10px,2px,solid);
+	color:@color;
+	background-color: @background-color;
+	text-align: center;
+	.function-box-shadow-4;
+}
