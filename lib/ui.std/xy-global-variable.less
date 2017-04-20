@@ -1,0 +1,26 @@
+
+//空间方案参数
+@base-height:28px;
+@base-padding:3px;
+@base-width:80px;
+@base-screen-min-width : 767px;
+@base-margin:15px;
+
+//三原色颜色定义
+@base-primary-red:hsl(1,1,50%);
+@base-primary-green:hsl(120,1,50%);
+@base-primary-blue:hsl(240,1,50%);
+
+//场景颜色定义
+@base-info-color:@base-primary-color;
+@base-warning-color:hsl(90,1,40%);
+@base-sucess-color:@base-primary-green;//绿色
+@base-error-color:@base-primary-red;//红色
+
+//边框颜色定义
+@base-border-color:#dddddd;
+
+//配色方案参数
+@base-primary-color:desaturate(@base-primary-blue,50%);//蓝色，降低饱和度10%
+@base-secondary-color:desaturate(spin(@base-primary-color,8),10%);//10度邻色，降低饱和度10%
+@base-complement-color:spin(@base-primary-color,160);//对比色

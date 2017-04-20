@@ -1,0 +1,45 @@
+@import "xy-global-variable.less";
+@import "xy-uifn.less";
+
+//INPUT TYPE=TEXT 元素标准样式
+.xy-input-text{
+	padding-top:@base-padding;
+	padding-bottom:@base-padding;
+	border-top-style : none !important;
+	border-left-style : none !important;
+	border-right-style : none !important;
+}
+//大于SCREEN媒体最大宽度时样式
+.xy-input-text-gtm{
+	.xy-uifn-width-heigth(@base-screen-min-width * 3 / 4,@base-height + 3);
+	.xy-input-text;
+}
+//小于于SCREEN媒体最大宽度时样式
+.xy-input-text-ltm{
+	.xy-uifn-width-heigth(100%,@base-height + 3);
+	.xy-input-text;
+ }
+ 
+ @input-text-border-colors:black,blue,red,brown;
+ 
+ .input-text-border-colors-loop(length(@input-text-border-colors),@input-text-border-colors);
+ .input-text-border-colors-loop(@index,@colors)when(@index > 0){
+ 	@_color:extract(@colors,@index);
+ 	
+ 	&.xy-input-text-@{_color}{
+ 		.xy-input-text;
+ 		border-bottom : 1px solid @_color ;
+ 	}
+ 	.input-text-border-colors-loop(@index - 1 , @colors);
+ }
+ 
+.xy-input-text-responsive{
+	.xy-input-text-ltm;
+	
+	@media screen {
+	 	@media (min-width : @base-screen-min-width){
+	 		//大于最小值时，使用xy-input-text-gtm样式规则
+	 		.xy-input-text-gtm;
+	 	}
+	 }
+ }

@@ -1,0 +1,31 @@
+@import "xy-global-variable.less";
+@import "xy-uifn.less";
+
+.xy-button{
+	border:none;
+	.xy-uifn-width-heigth(@base-width,@base-height + 4);
+}
+
+//配色方案
+@_btn-color-schemes:primary,secondary,complement;
+//按照配色方案生成
+.btn-color-schemes-loop(length(@_btn-color-schemes),@_btn-color-schemes);
+
+.btn-color-schemes-loop(@index,@list)when(@index > 0){
+	@_scheme : extract(@list,@index);
+	
+	&.xy-button-@{_scheme}{
+		@__scheme : %("base-%a-color",@_scheme);//生成全局变量
+		@__color : @@__scheme;
+		color: contrast(@__color);
+		background-color: darken(@__color,2%);
+		.xy-button;
+		
+		&:hover{
+			@h-bg-color:lighten(@__color,10%);//增加10%亮度
+			background-color:@h-bg-color;
+			color:contrast(@h-bg-color);
+		}
+	}
+	.btn-color-schemes-loop(@index - 1,@list);
+}
